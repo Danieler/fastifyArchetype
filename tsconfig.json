@@ -1,0 +1,20 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "lib": [
+            "es6"
+        ],
+        "allowJs": true,
+        "outDir": "dist",
+        "rootDir": "src",
+        "strict": true,
+        "sourceMap": true,
+        "noImplicitAny": true,
+        "forceConsistentCasingInFileNames": true,
+        "allowSyntheticDefaultImports": true,
+        "esModuleInterop": true
+    },
+    "exclude": ["node_modules", "**/*.spec.ts", "dist/**/*.js",
+      "src/test", "jest.config.js"]
+}

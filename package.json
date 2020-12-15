@@ -1,0 +1,59 @@
+{
+    "name": "node-api-starter",
+    "version": "1.0.0",
+    "description": "Node.js Restful API starter project",
+    "main": "index.js",
+    "scripts": {
+        "start": "npm run build && node dist/index.js",
+        "start:dev": "cross-env NODE_ENV=development docker-compose up -d && nodemon",
+        "build": "rimraf ./dist && tsc -sourcemap",
+        "test": "cross-env NODE_ENV=test jest --detectOpenHandles --forceExit",
+        "coverage": "cat src/test/coverage/lcov.info | coveralls",
+        "lint": "eslint --fix {src,test,config}/**/*.{js,ts}",
+        "prettier": "prettier",
+        "prettier:base": "npm run prettier **/*.{js,json,scss,md,ts,html,component.html}",
+        "prettier:write": "npm run prettier:base --write",
+        "prettier:check": "npm run prettier:base --list-different"
+    },
+    "keywords": [
+        "node",
+        "typescript",
+        "mongo",
+        "mongoose",
+        "fastify",
+        "swagger"
+    ],
+    "author": "Georgi Marokov <georgi.marokov@gmail.com> (www.worldwildweb.dev)",
+    "license": "ISC",
+    "devDependencies": {
+        "@types/jest": "^25.1.2",
+        "@types/node": "^13.7.1",
+        "coveralls": "^3.0.9",
+        "cross-env": "^7.0.0",
+        "jest": "^25.1.0",
+        "nodemon": "^2.0.2",
+        "prettier": "^1.19.1",
+        "rimraf": "^3.0.2",
+        "ts-jest": "^25.2.0",
+        "ts-node": "^8.10.2",
+        "typescript": "^3.7.5"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git://github.com/gmarokov/node-fastify-mongo-api.git"
+    },
+    "dependencies": {
+        "@types/boom": "^7.3.0",
+        "@types/mongoose": "^5.7.1",
+        "@typescript-eslint/eslint-plugin": "^2.19.2",
+        "@typescript-eslint/parser": "^2.19.2",
+        "boom": "^7.3.0",
+        "eslint": "^6.8.0",
+        "eslint-config-prettier": "^6.10.0",
+        "eslint-plugin-prettier": "^3.1.2",
+        "fastify": "^2.15.1",
+        "fastify-swagger": "^2.6.0",
+        "mongodb-memory-server": "^6.2.4",
+        "mongoose": "^5.8.12"
+    }
+}
