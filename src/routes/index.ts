@@ -1,9 +1,8 @@
 import { CarsController } from '../controllers/carsController';
-import Car from '../models/Car';
 import { RouteOptions } from 'fastify';
 import { AddCarSchema } from './documentation/carsApi';
 
-const carsController: CarsController = new CarsController(Car);
+const carsController: CarsController = new CarsController();
 
 const getCarsRoute: RouteOptions = {
 	method: 'GET',

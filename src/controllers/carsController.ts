@@ -2,15 +2,12 @@ import boom from 'boom';
 import { Document } from 'mongoose';
 import { ServerResponse } from 'http';
 import { FastifyRequest, FastifyReply } from 'fastify';
+import Car from '../models/Car';
 
 export class CarsController {
-	public myCar: any;
-	constructor(Car: any) {
-		this.myCar = Car;
-	}
 	async getCars(req: FastifyRequest, reply: FastifyReply<ServerResponse>): Promise<Document[]> {
 		try {
-			const cars = await this.myCar.find();
+			const cars = await Car.find();
 			return cars;
 		} catch (err) {
 			throw boom.boomify(err);
@@ -19,7 +16,7 @@ export class CarsController {
 	async getSingleCar(req: FastifyRequest, reply: FastifyReply<ServerResponse>): Promise<Document | null> {
 		try {
 			const id = req.params.id;
-			const car = await this.myCar.findById(id);
+			const car = await Car.findById(id);
 			return car;
 		} catch (err) {
 			throw boom.boomify(err);
@@ -27,7 +24,7 @@ export class CarsController {
 	}
 	async addCar(req: FastifyRequest, reply: FastifyReply<ServerResponse>) {
 		try {
-			const car = await this.myCar.create(req.body);
+			const car = await Car.create(req.body);
 			return car;
 		} catch (err) {
 			throw boom.boomify(err);
@@ -38,7 +35,7 @@ export class CarsController {
 			const id = req.params.id;
 			const car = req.body;
 			const { ...updateData } = car;
-			const update = await this.myCar.findByIdAndUpdate(id, updateData, { new: true });
+			const update = await Car.findByIdAndUpdate(id, updateData, { new: true });
 			return update;
 		} catch (err) {
 			throw boom.boomify(err);
@@ -47,7 +44,7 @@ export class CarsController {
 	async deleteCar(req: FastifyRequest, reply: FastifyReply<ServerResponse>) {
 		try {
 			const id = req.params.id;
-			const car = await this.myCar.findByIdAndRemove(id);
+			const car = await Car.findByIdAndRemove(id);
 			return car;
 		} catch (err) {
 			throw boom.boomify(err);
